@@ -50,9 +50,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #FFA500; /* Bright Orange for Halloween */
+      color: white; /* Changed text color to white */
       text-align: center;
-      text-shadow: 3px 3px 6px rgba(139, 0, 0, 0.8); /* Dark red shadow */
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8); /* Dark shadow for contrast */
       padding: 8px 16px;
       width: 90%;
       max-width: 800px;
@@ -67,6 +67,22 @@
 
     .banner-text p {
       font-size: 2.5em; /* Increased font size */
+    }
+
+    /* Flying Bat Animation */
+    .flying-bat {
+      position: absolute;
+      top: 10%;
+      left: -10%;
+      width: 100px;
+      z-index: 3;
+      animation: flyBat 8s infinite linear;
+    }
+
+    @keyframes flyBat {
+      0% { left: -10%; }
+      50% { left: 110%; }
+      100% { left: -10%; }
     }
 
     /* Responsive Adjustments */
@@ -110,6 +126,12 @@
       src="https://www.fitclub.net/sites/ob-143.app.sitewright.io/files/image/2024-09/west%20weights2%20%281%29.JPG"
       alt="West Weights Banner"
       class="banner-image"
+    />
+    <!-- Flying Bat Image -->
+    <img
+      src="path-to-your-flying-bat-image.png"
+      alt="Flying Bat"
+      class="flying-bat"
     />
     <div class="banner-text">
       <h1>🎃 Have No Fear This Halloween Season! 🎃</h1>
