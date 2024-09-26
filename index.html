@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Halloween Banner</title>
   <style>
     /* Reset default margins and paddings */
@@ -16,7 +16,7 @@
     .banner-container {
       position: relative;
       width: 100%;
-      height: 100%;
+      height: 100%; /* Make container height 100% of iframe */
       overflow: hidden;
     }
 
@@ -24,7 +24,7 @@
     .banner-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* Ensures the image covers the container */
       object-position: center;
       display: block;
     }
@@ -44,13 +44,13 @@
     }
 
     .banner-text h1 {
-      font-size: 2.5em;
+      font-size: 2em; /* Adjusted for better fit */
       margin-bottom: 0.5em;
       font-family: Arial, sans-serif;
     }
 
     .banner-text p {
-      font-size: 1.5em;
+      font-size: 1.2em; /* Adjusted for better fit */
       font-family: Arial, sans-serif;
     }
 
@@ -59,11 +59,11 @@
     /* Tablets and Small Desktops */
     @media (max-width: 1024px) {
       .banner-text h1 {
-        font-size: 2em;
+        font-size: 1.8em;
       }
 
       .banner-text p {
-        font-size: 1.2em;
+        font-size: 1em;
       }
     }
 
@@ -74,7 +74,7 @@
       }
 
       .banner-text p {
-        font-size: 1em;
+        font-size: 0.9em;
       }
     }
 
@@ -84,7 +84,7 @@
       }
 
       .banner-text p {
-        font-size: 0.9em;
+        font-size: 0.8em;
       }
     }
   </style>
