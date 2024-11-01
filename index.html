@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Responsive Halloween Banner</title>
+  <title>Responsive November Banner</title>
 
-  <!-- Include Google Fonts for Halloween-Themed Font -->
+  <!-- Include Google Fonts for Autumn-Themed Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700&display=swap" rel="stylesheet">
 
   <style>
     /* Reset default margins and paddings */
@@ -30,7 +30,7 @@
     .banner-container {
       position: relative;
       width: 100%;
-      height: 100%;
+      height: 100vh; /* Set height to viewport height */
       overflow: hidden;
     }
 
@@ -41,7 +41,9 @@
       object-fit: cover; /* Ensures the image fills the container */
       object-position: center;
       display: block;
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
       z-index: 0; /* Background image at the lowest layer */
     }
 
@@ -51,20 +53,18 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #fff;
+      color: #8B4513; /* Dark brown color */
       text-align: center;
-      /* Creepy Halloween Glow */
+      /* Warm Glow */
       text-shadow:
-        0 0 5px #ff0000,
-        0 0 10px #ff0000,
-        0 0 20px #ff8c00,
-        0 0 30px #ff8c00,
-        0 0 40px #ffff00;
+        0 0 5px #FF8C00,
+        0 0 10px #FFA500,
+        0 0 15px #FFD700;
       padding: 8px 16px;
       width: 90%;
       max-width: 800px;
       z-index: 2;
-      font-family: 'Creepster', cursive; /* Halloween-themed font */
+      font-family: 'Crimson Pro', serif; /* Autumn-themed font */
     }
 
     .banner-text h1 {
@@ -76,130 +76,34 @@
       font-size: 2.5em; /* Increased font size */
     }
 
-    /* Flying Bat Animations */
-
-    /* Common Styles for All Bats */
-    .flying-bat {
+    /* Falling Leaves */
+    .leaf {
       position: absolute;
-      left: -10%;
-      width: 80px;
-      z-index: 1; /* Bat is behind the text */
-      animation: flapWings 0.5s infinite ease-in-out;
+      top: -10%; /* Start above the banner */
+      width: var(--leaf-size, 80px);
+      height: var(--leaf-size, 80px);
+      opacity: 0.9;
+      z-index: 1; /* Leaves are behind the text */
+      transform-origin: center;
     }
 
-    /* Bat 1 */
-    .flying-bat-1 {
-      top: 25%; /* Starting vertical position */
-      animation: flyBat1 8s infinite linear, flapWings 0.5s infinite ease-in-out;
-      animation-delay: 2s, 2s; /* Delayed start */
-    }
-
-    /* Bat 2 */
-    .flying-bat-2 {
-      top: 50%; /* Starting vertical position */
-      animation: flyBat2 11s infinite linear, flapWings 0.5s infinite ease-in-out;
-      animation-delay: 4s, 4s; /* Delayed start */
-    }
-
-    /* Bat 3 */
-    .flying-bat-3 {
-      top: 70%; /* Starting vertical position */
-      animation: flyBat3 9s infinite linear, flapWings 0.5s infinite ease-in-out;
-      animation-delay: 6s, 6s; /* Delayed start */
-    }
-
-    /* Keyframes for Bat Flight Path */
-    @keyframes flyBat1 {
+    /* Leaf Animation */
+    @keyframes fall {
       0% {
-        left: -10%;
-        top: 25%;
-        transform: scale(0.8) rotate(0deg);
-      }
-      25% {
-        left: 20%;
-        top: 15%;
-        transform: scale(1) rotate(10deg);
-      }
-      50% {
-        left: 50%;
-        top: 20%;
-        transform: scale(1.1) rotate(-5deg);
-      }
-      75% {
-        left: 80%;
-        top: 15%;
-        transform: scale(1) rotate(5deg);
+        top: -10%;
+        left: var(--start-left, 50%);
+        transform: rotate(0deg);
       }
       100% {
-        left: 110%;
-        top: 25%;
-        transform: scale(0.8) rotate(0deg);
+        top: calc(100% - var(--leaf-size));
+        left: var(--end-left, 50%);
+        transform: rotate(360deg);
       }
     }
 
-    @keyframes flyBat2 {
-      0% {
-        left: -10%;
-        top: 50%;
-        transform: scale(0.8) rotate(0deg);
-      }
-      25% {
-        left: 20%;
-        top: 55%;
-        transform: scale(1) rotate(-10deg);
-      }
-      50% {
-        left: 50%;
-        top: 45%;
-        transform: scale(1.1) rotate(5deg);
-      }
-      75% {
-        left: 80%;
-        top: 50%;
-        transform: scale(1) rotate(-5deg);
-      }
-      100% {
-        left: 110%;
-        top: 50%;
-        transform: scale(0.8) rotate(0deg);
-      }
-    }
-
-    @keyframes flyBat3 {
-      0% {
-        left: -10%;
-        top: 70%;
-        transform: scale(0.8) rotate(0deg);
-      }
-      25% {
-        left: 20%;
-        top: 65%;
-        transform: scale(1) rotate(5deg);
-      }
-      50% {
-        left: 50%;
-        top: 75%;
-        transform: scale(1.1) rotate(-5deg);
-      }
-      75% {
-        left: 80%;
-        top: 70%;
-        transform: scale(1) rotate(10deg);
-      }
-      100% {
-        left: 110%;
-        top: 70%;
-        transform: scale(0.8) rotate(0deg);
-      }
-    }
-
-    /* Keyframes for Bat Wing Flapping */
-    @keyframes flapWings {
-      0% { transform: scale(1) rotate(0deg); }
-      25% { transform: scale(1) rotate(5deg); }
-      50% { transform: scale(1) rotate(0deg); }
-      75% { transform: scale(1) rotate(-5deg); }
-      100% { transform: scale(1) rotate(0deg); }
+    /* Ensure the leaf stays at the final position */
+    .leaf {
+      animation-fill-mode: forwards;
     }
 
     /* Responsive Adjustments */
@@ -242,36 +146,75 @@
     <!-- Background Image -->
     <img
       src="https://www.fitclub.net/sites/ob-143.app.sitewright.io/files/image/2024-09/west%20weights2%20%281%29.JPG"
-      alt="West Weights Banner"
+      alt="November Banner"
       class="banner-image"
-    />
-
-    <!-- Flying Bat 1 -->
-    <img
-      src="https://www.fitclub.net/sites/ob-143.app.sitewright.io/files/image/2024-09/flying%20bat.png"
-      alt="Flying Bat 1"
-      class="flying-bat flying-bat-1"
-    />
-
-    <!-- Flying Bat 2 -->
-    <img
-      src="https://www.fitclub.net/sites/ob-143.app.sitewright.io/files/image/2024-09/flying%20bat.png"
-      alt="Flying Bat 2"
-      class="flying-bat flying-bat-2"
-    />
-
-    <!-- Flying Bat 3 -->
-    <img
-      src="https://www.fitclub.net/sites/ob-143.app.sitewright.io/files/image/2024-09/flying%20bat.png"
-      alt="Flying Bat 3"
-      class="flying-bat flying-bat-3"
     />
 
     <!-- Text Overlay -->
     <div class="banner-text">
-      <h1>🎃 HAPPY HALLOWEEN!! 🎃</h1>
-      <p>Join on Halloween for a special treat! $10 down and no dues until Nov. 30th!🦇</p>
+      <h1>🍁 Fall into Fitness this November! 🍁</h1>
+      <p></p>
     </div>
   </div>
+
+  <!-- JavaScript for Falling Leaves -->
+  <script>
+    const bannerContainer = document.querySelector('.banner-container');
+
+    const leafColors = ['#FF4500', '#FF6347', '#FFA500', '#FFD700', '#FF8C00'];
+    const leafPaths = [
+      // Accurate Maple Leaf SVG path data
+      'M50,5 C30,25 10,35 10,55 C10,70 30,80 50,95 C70,80 90,70 90,55 C90,35 70,25 50,5 Z',
+      // Oak Leaf SVG path data
+      'M50,0 C35,20 15,25 15,45 C15,60 35,65 50,100 C65,65 85,60 85,45 C85,25 65,20 50,0 Z',
+      // Birch Leaf SVG path data
+      'M50,0 C70,30 70,70 50,100 C30,70 30,30 50,0 Z',
+    ];
+
+    function createLeaf() {
+      const leaf = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      leaf.setAttribute('viewBox', '0 0 100 100');
+      leaf.classList.add('leaf');
+
+      // Randomly select a leaf path and color
+      const pathData = leafPaths[Math.floor(Math.random() * leafPaths.length)];
+      const color = leafColors[Math.floor(Math.random() * leafColors.length)];
+
+      const size = 60 + Math.random() * 40; // Leaf size between 60px and 100px
+      leaf.style.setProperty('--leaf-size', `${size}px`);
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', pathData);
+      path.setAttribute('fill', color);
+
+      leaf.appendChild(path);
+
+      // Randomize starting and ending positions
+      const startLeft = Math.random() * 100; // Percentage
+      const endLeft = startLeft + (Math.random() * 20 - 10); // Move left or right by up to 10%
+      leaf.style.setProperty('--start-left', `${startLeft}%`);
+      leaf.style.setProperty('--end-left', `${endLeft}%`);
+
+      const animationDuration = 5 + Math.random() * 5; // 5s to 10s
+      const delay = Math.random() * 5; // 0s to 5s
+
+      leaf.style.animation = `fall ${animationDuration}s linear ${delay}s forwards`;
+
+      bannerContainer.appendChild(leaf);
+
+      // Ensure the leaf stays at the final position after animation
+      leaf.addEventListener('animationend', () => {
+        // Remove the animation to prevent further changes
+        leaf.style.animation = 'none';
+        // Set the final position and rotation
+        leaf.style.top = `calc(100% - ${size}px)`;
+        leaf.style.left = `calc(${endLeft}% - ${size / 2}px)`;
+        leaf.style.transform = 'rotate(360deg)';
+      });
+    }
+
+    // Create leaves continuously
+    setInterval(createLeaf, 1000); // Adjust the interval as needed
+  </script>
 </body>
 </html>
